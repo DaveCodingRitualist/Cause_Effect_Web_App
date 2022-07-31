@@ -9,7 +9,7 @@ include('config/db_connect.php');
 if(isset($_POST['create'])){
     $dutyname = textboxValue(value:"duty4-name");
     $id = textboxValue(value:"duty4-id");
-   
+    
     if($dutyname){
         
         $sql = "INSERT INTO bartender(id,duty) VALUES('$id', '$dutyname')";
@@ -22,8 +22,6 @@ if(isset($_POST['create'])){
     }else{
         TextNode(classname: "error", msg: "Provide Data in the Textbox");
     }
-
-   
 }
 
 if(isset($_POST['update'])){
@@ -113,8 +111,8 @@ function buttonElement($btnid, $styleclass, $text, $name, $attr){
 }
     //    NIGHT SHIFT DUTIES OPERATIONS 
 if(isset($_POST['createbar'])){
-    $dutyname = textboxValue(value:"duty-name");
-    $id = textboxValue(value:"duty-id");
+    $dutyname = textboxValue(value:"duty4-name");
+    $id = textboxValue(value:"duty4-id");
    
     if($dutyname){
         
@@ -240,8 +238,8 @@ function getData_supplies(){
 
 
 if(isset($_POST['updatebar'])){
-    $dutyname = textboxValue(value:"duty-name");
-    $id = textboxValue(value:"duty-id");
+    $dutyname = textboxValue(value:"duty4-name");
+    $id = textboxValue(value:"duty4-id");
     if($dutyname){
     $sql = "UPDATE bartender_night SET duty ='$dutyname'  WHERE id = '$id';";
         if(mysqli_query($GLOBALS['conn'], $sql)){
@@ -310,8 +308,8 @@ if(isset($_POST['update_supply'])){
 }
 
 if(isset($_POST['deletebar'])){
-    $dutyname = textboxValue(value:"duty-name");
-    $id = (int)textboxValue(value:"duty-id");
+    $dutyname = textboxValue(value:"duty4-name");
+    $id = (int)textboxValue(value:"duty4-id");
 
     if($dutyname){
         
@@ -365,8 +363,8 @@ if(isset($_POST['delete_supply'])){
     } 
 }
 function deleteRecord(){
-    $dutyname = textboxValue(value:"duty-name");
-    $id = (int)textboxValue(value:"duty-id");
+    $dutyname = textboxValue(value:"duty4-name");
+    $id = (int)textboxValue(value:"duty4-id");
 
     if($dutyname){
         
@@ -912,7 +910,7 @@ function setID_(){
                color: lightsalmon;
                cursor: pointer;
            }
-           .btnedit_supplies{
+           .btnedit_supplies, .btneditbarday, .btneditbacknight, .btneditbarnight{
                color: lightsalmon;
                cursor: pointer;
            }
@@ -1009,13 +1007,14 @@ function setID_(){
     <form action="upload-contents.php" method="post" >
         <div class="py-2">
         <div class="input-group mb-3" style="display: none;" >
-         <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
+         <span class="input-group-text bg-danger"><i class="fa-solid fa-id-badge text-white"></i></span>
          <input type="text"  autocomplete="on" class="form-control bg-light text-muted" name="duty4-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon11">
         </div>
         <div class="input-group mb-3">
-         <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
+         <span class="input-group-text bg-danger" ><i class="fa-solid fa-receipt text-white"></i></span>
         <input type="text" class="form-control light text-muted " name="duty4-name" placeholder="Enter Duty description" aria-label="item" aria-describedby="basic-addon1">
         </div>
+     
         </div>
         
         <div class="d-flex btn-group-prep justify-content-center">
@@ -1063,7 +1062,7 @@ function setID_(){
                                            echo $i;
                                         ?></td>
                              <td data-id="<?php echo $row['id']; ?>"><?php echo $row['duty']?></td>
-                             <td ><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></td>
+                             <td ><i class="fas fa-edit btneditbarday" data-id="<?php echo $row['id']; ?>"></i></td>
                          </tr>
                          <?php  
                           }
@@ -1077,7 +1076,7 @@ function setID_(){
 </div>
 
 </div>
-
+                </form>
             </main>   
         </div>
         <div class="tab tab-pane fade" id="profile"
@@ -1161,9 +1160,9 @@ function setID_(){
      </div>    
 
       </div>
+                </form>
       <div class="modal-footer bg-dark border-dark">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="submit" name="barduty" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -1204,11 +1203,11 @@ function setID_(){
         <div class="py-2">
         <div class="input-group mb-3" style="display: none;" >
          <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
-         <input type="text"  autocomplete="on" class="form-control bg-light text-muted" name="duty-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon11">
+         <input type="text"  autocomplete="on" class="form-control bg-light text-muted" name="duty4-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon11">
         </div>
         <div class="input-group mb-3">
          <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
-        <input type="text" class="form-control light text-muted " name="duty-name" placeholder="Enter Duty description" aria-label="item" aria-describedby="basic-addon1">
+        <input type="text" class="form-control light text-muted " name="duty4-name" placeholder="Enter Duty description" aria-label="item" aria-describedby="basic-addon1">
         </div>
         </div>
         
@@ -1258,7 +1257,7 @@ function setID_(){
                                            echo $i;
                                         ?></td>
                              <td data-id="<?php echo $row['id']; ?>"><?php echo $row['duty']?></td>
-                             <td ><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></td>
+                             <td ><i class="fas fa-edit btnedit btneditbarday" data-id="<?php echo $row['id']; ?>"></i></td>
                          </tr>
                          <?php  
                           }
@@ -1336,7 +1335,7 @@ function setID_(){
                                            echo $i;
                                         ?></td>
                              <td data-id="<?php echo $row['id']; ?>"><?php echo $row['duty']?></td>
-                             <td ><i class="fas fa-edit btnedit_" data-id="<?php echo $row['id']; ?>"></i></td>
+                             <td ><i class="fas fa-edit btneditbarnight" data-id="<?php echo $row['id']; ?>"></i></td>
                          </tr>
                          <?php  
                           }
@@ -1357,7 +1356,7 @@ function setID_(){
       </div>
       <div class="modal-footer bg-dark border-dark">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" name="barduty" class="btn btn-primary">Submit</button>
+       
       </div>
     </div>
   </div>

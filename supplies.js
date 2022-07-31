@@ -31,10 +31,21 @@ function displayDatasupply(e) {
 }
 
 
-let id = $("input[name*='duty4-id']")
+let id = $("input[name*='duty-id']")
 id.attr("readonly","readonly");
 
 $(".btnedit").click( e =>{
+   console.log("button clicked");
+    let textvalues = displayData(e);
+    let dutyname = $("input[name*='duty-name']");
+    id.val(textvalues[0]);
+    dutyname.val(textvalues[1]);
+});
+
+
+$(".btneditbarday").click( e =>{
+let id = $("input[name*='duty4-id']")
+id.attr("readonly","readonly");
    console.log("button clicked");
     let textvalues = displayData(e);
     let dutyname = $("input[name*='duty4-name']");
@@ -44,8 +55,16 @@ $(".btnedit").click( e =>{
 $(".btnedit_").click( e =>{
     let id = $("input[name*='duty22-id']")
     id.attr("readonly","readonly");
-    let textvalues = displayData(e);
+    let textvalues = displayData_(e);
     let dutyname = $("input[name*='duty22-name']");
+    id.val(textvalues[0]);
+    dutyname.val(textvalues[1]);
+});
+$(".btneditbarnight").click( e =>{
+    let id = $("input[name*='duty2-id']")
+    id.attr("readonly","readonly");
+    let textvalues = displayData_(e);
+    let dutyname = $("input[name*='duty2-name']");
     id.val(textvalues[0]);
     dutyname.val(textvalues[1]);
 });
@@ -63,13 +82,26 @@ function displayData(e) {
     return textvalues;
 
 }
+function displayData_(e) {
+    let id = 0;
+    const td = $("#tbody tr td");
+    let textvalues = [];
 
-$('#exampleModal').modal({
-    backdrop: 'static',
-    keyboard: false
-})
+    for (const value of td){
+        if(value.dataset.id == e.target.dataset.id){
+           textvalues[id++] = value.textContent;
+        }
+    }
+    return textvalues;
 
-document.querySelector('.read').addEventListener('click', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-  });
+}
+
+// $('#exampleModal').modal({
+//     backdrop: 'static',
+// 09ioi    keyboard: false
+// })
+
+// document.querySelector('.read').addEventListener('click', function(event) {
+//     event.preventDefault();
+//     event.stopPropagation();
+//   });
