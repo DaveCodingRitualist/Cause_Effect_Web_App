@@ -1,0 +1,29 @@
+<?
+include('config/db_connect.php');
+
+if(isset($_POST['save-team'])){
+    // $manageronduty = textboxValue(value:"manager-on-duty");
+    // $anchoronduty = textboxValue(value:"anchor-on-duty");
+    // $preponduty = textboxValue(value:"prep-on-duty");
+    // $barbackonduty = textboxValue(value:"bar-back-on-duty");
+
+    $manageronduty = $_POST['manager-on-duty'];
+    $anchoronduty = $_POST['anchor-on-duty'];
+    $preponduty = $_POST['prep-on-duty'];
+    $barbackonduty = $_POST['bar-back-on-duty'];
+    
+    if($manageronduty && $anchoronduty && $preponduty && $barbackonduty){
+        
+        $sql = "INSERT INTO team (manager_on_duty,anchor_on,prep_on,bar_back) VALUES ('$manageronduty','$anchoronduty','$preponduty','$barbackonduty')";
+        if(mysqli_query($GLOBALS['conn'],$sql)){
+           
+            echo '<script> alert("Data Saved"); </script>';
+        }else{
+            echo '<script> alert("Data Not Saved"); </script>'; echo "Error";
+        }
+        
+    // }else{
+    //     TextNode(classname: "error", msg: "Provide Data in the Textbox");
+    // }
+   
+    }
