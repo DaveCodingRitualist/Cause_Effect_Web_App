@@ -76,6 +76,7 @@
                                     <a class="nav-link" href="weekly-orders.php">Weekly</a>
                                 </nav>
                             </div>
+                          
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts1">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Reports
@@ -120,6 +121,10 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading"></div>
+                            <a class="nav-link" href="manager-report.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-marker"></i></div>
+                               Manager Report
+                            </a>
                             <a class="nav-link" href="supplies.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-field"></i> </div>
                                Supplies

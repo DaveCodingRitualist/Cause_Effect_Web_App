@@ -1170,6 +1170,7 @@ function deleteRecord_prep(){
       <div id="wrapper" class="container">
 
 	<form id="paper" method="get" action="$_POST" >
+    
 		<textarea placeholder="Enter some notes here." id="text"  name="text" rows="10" style=" word-wrap: break-word; resize: none; height: 160px; "></textarea>  
 		<br>
 		

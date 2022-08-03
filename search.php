@@ -137,6 +137,36 @@ include('config/db_connect.php');
                     }
         </style>
     <?php include('template/admin-header.php'); ?>
+    <section class="recipes-section mb-5 pb-5">
+
+<!-- Navbar Search-->
+<!-- <div class="search-container mb-5 pt-5">
+    <div class="text-white mt-3"><h3 class="ms-3">Recipes</h3></div>
+    <form action="search.php" method="POST" class=" d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 align-item-center input-group2 me-3">
+         <div class="input-group">
+             <input class="form-control" type="text" placeholder="Search a recipe..." aria-label="Search for..." aria-describedby="btnNavbarSearch" name="search"/>
+             <button class="btn btn-primary" name="submit-search" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+         </div>
+     </form> 
+</div> -->
+
+     
+<div class="container-fluid recipes-container mt-3 pt-5">
+<h2 class="py-2 text-light bg-dark text-muted rounded text-center mb-4" ><i class="fa-solid fa-book-open-reader"></i> Prep Recipes</h2>
+<div class="row">
+
+<div class="col-6 col-lg-3 col-md-4">
+
+</div>
+
+
+</div>
+</div>
+
+</section>
+
+
+
     <section class=" recipes-section pt-2">
 
 <!-- Navbar Search-->

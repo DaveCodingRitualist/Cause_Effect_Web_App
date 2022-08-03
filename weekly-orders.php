@@ -282,7 +282,7 @@ function setID(){
         <main class="pt-3 mt-5 section">
             <div class="container text-center text-muted">
             <p id="daily-prep" style="display: none;"></p>
-                <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-file-invoice"></i> weekly Orders</h2>
+                <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-file-invoice"></i> Weekly Orders</h2>
                 
                 <div class="d-flex justify-content-center">
                 <form action="weekly-orders.php" method="post" class="w-50">
