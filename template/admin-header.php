@@ -76,6 +76,10 @@
                                     <a class="nav-link" href="weekly-orders.php">Weekly</a>
                                 </nav>
                             </div>
+                            <a class="nav-link" href="rail-count.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-calculator"></i></div>
+                               Speed Rail Count
+                            </a>
                           
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts1">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

@@ -14,18 +14,18 @@ if(isset($_POST['manager-report'])){
     $service = textboxValue("service");
     $items = textboxValue("items");
     $breakages = textboxValue("breakages"); 
+    $mod = textboxValue("manager-on-duty"); 
     $date = date('Y/m/d H:i:s'); 
 
-    if($bar && $kitchen && $floor && $service && $items && $breakages){
+    if($bar && $kitchen && $floor && $service && $items && $breakages && $mod){
       
-        $sql = "UPDATE test SET floors='$floor', bar='$bar', kitchen='$kitchen', services='$service', items='$items', breakages='$breakages';"; 
-        $sql2 = "UPDATE test SET updated_at='$date';"; 
-       
-       
+        $sql = "UPDATE test SET floors='$floor', bar='$bar', kitchen='$kitchen', services='$service', items='$items', breakages='$breakages', manager='$mod';"; 
+        $sql2 = "UPDATE test SET updated_at='$date';";
                 // $sql2 = "INSERT INTO team(updated_at) VALUES('$date')";
        
         if(mysqli_query($GLOBALS['conn'], $sql)){
             TextNode("success", "Data Successfully Submited");
+            header('Location: shift-report.php');
         }else{
             TextNode("error", "Enable to Update Data");
         }
@@ -311,17 +311,21 @@ function setID(){
                     <div class="py-2 form">
                     
                     <div >
+                    <div class="input-group mb-3" >
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
+                     <input type="text" class="form-control bg-light text-muted " name="manager-on-duty" placeholder="Manager On Duty" aria-label="Recipe" aria-describedby="basic-addon1" >
+                    </div>
                     <div class="input-group mb-3">
-                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-file text-white"></i></span>
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-users text-light"></i></span>
                     <input type="text" class="form-control bg-light text-muted " name="floor-staff" placeholder="Floor Staff" aria-label="Request" aria-describedby="basic-addon1">
                     </div>
                         
                              <div class="input-group mb-3" >
-                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-users text-light"></i></span>
                      <input type="text" class="form-control bg-light text-muted " name="bar-staff" placeholder="Bar Staff" aria-label="Recipe" aria-describedby="basic-addon1" >
                     </div>
                     <div class="input-group mb-3">
-                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-users text-light"></i></span>
                     <input type="text" class="form-control bg-light text-muted " name="kitchen-staff" placeholder="Kitchen Staff" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
                                        

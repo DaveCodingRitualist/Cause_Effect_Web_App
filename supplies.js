@@ -1,5 +1,5 @@
-let idsupplies = $("input[name*='duty3-id']");
-idsupplies.attr("readonly","readonly");
+// let idsupplies = $("input[name*='duty3-id']");
+// idsupplies.attr("readonly","readonly");
 
 
 $(".btnedit_supplies").click( e =>{
@@ -17,13 +17,13 @@ $(".btnedit_supplies").click( e =>{
     email.val(textvaluessupplies[4]);
 });
 function displayDatasupply(e) {
-    let idsupplies = -1;
+    let id = 0;
     const td = $("#tbody tr td");
     let textvaluessupplies = [];
 
     for (const value of td){
-        if(value.dataset.idsupplies == e.target.dataset.idsupplies){
-           textvaluessupplies[idsupplies++] = value.textContent;
+        if(value.dataset.id == e.target.dataset.id){
+           textvaluessupplies[id++] = value.textContent;
         }
     }
     return textvaluessupplies;
