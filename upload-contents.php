@@ -953,9 +953,18 @@ function setID_(){
             background-color: blanchedalmond;
             color: #DC3545;
            }
-    
-  /* display: block;
-            align-items: flex-end; */
+           ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
+	
         </style>
         <script>
    
@@ -1646,7 +1655,7 @@ function setID_(){
                     >checklist </i>Night Shift Duties</button>
                     </div>
                     <div class="card-body">
-                    <button type="button" class="btn btn-warning ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-file-circle-plus"></i> Add recipes</button>
+                    <button type="button" class="btn btn-warning ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-file-circle-plus"></i> Prep recipes and Cocktails</button>
                     </div>
                     <div class="card-body">
                     <button type="button" class="btn btn-info ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal222"> 
@@ -1658,9 +1667,7 @@ function setID_(){
  
                     <i class="fa-solid fa-truck-medical"></i> Add Supplies</button>
                     </div>
-                    <div class="card-body">
-                    <button type="button" class="btn btn-light ms-1 fw-bold text-dark"><i class="fa-solid fa-file-lines"></i> Shift Report</button>
-                    </div>
+                    
                 </div>
                 </div>
            

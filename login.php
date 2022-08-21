@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
   <style>
     .form-box2{
   width: 380px;
-  height: 250px;
+  height: 280px;
   position: relative;
   margin: 2% auto;
   background: rgba(0, 92, 117, .5);
@@ -54,11 +54,12 @@ if(isset($_POST['submit'])){
   cursor: pointer;
   display: block;
   margin: auto;
-  background: rgba(243, 198, 147, 1);
+  background: rgba(165, 42, 42, .5);
   border: 0;
   outline: none;
   border-radius: 5px;
   width: 100%;
+  color: white;
   /* color: brown; */
 }
 .input-field2{
@@ -83,6 +84,14 @@ if(isset($_POST['submit'])){
 .home-title{
   display: block;
 }
+.terms{
+  background: rgba(0, 92, 117, .8);
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+ 
+ 
+}
 </style>
 <section class="full-page">
   <div class="container-md">
@@ -103,15 +112,21 @@ if(isset($_POST['submit'])){
      <?php 
      if(isset($_POST['submit'])){
      if(mysqli_num_rows($result) < 0){
-      $error = "Username or Password not correct!";
+      // $error = "Username or Password not correct!";
      }
      if(mysqli_num_rows($result) > 0) {
        echo $error = "";
      }
     }
-     echo $error;?>
+    ?>
       </p>
-          <button type='submit'  name="submit" class='submit-btn fw-bold mt-3'>Log in</button>
+      
+          <button type='submit'  name="submit" class='submit-btn mt-3'>Login</button>
+          <div class="terms mt-2">
+        <p class="p-1 text-center">
+          By clicking Login you accept <span class="text-info">terms</span>  and <span class="text-info">conditions</span>  of using this App
+        </p>
+      </div>
         </form>
     </div>
       

@@ -3,18 +3,16 @@
 use LDAP\Result;
 
 session_start();
-$par = $_SESSION['par']; 
-
 //connection
 include('config/db_connect.php');
 if(isset($_POST['create'])){
-    setcookie($_POST['par'], time()+ 86400);
+  
     createdata();
    
 }
 
 if(isset($_POST['update'])){
-    setcookie($_POST['par'], time()+ 86400);
+
     UpdateData();
 }
 
@@ -53,17 +51,15 @@ function buttonElement($btnid, $styleclass, $text, $name, $attr){
 
 function createData(){
     
-    $recipename = textboxValue(value:"recipe-name");
-    $stockonhand = textboxValue(value:"stock-on-hand");
-    $id = textboxValue(value:"recipe-id");
-    $slow = textboxValue(value:"slow-par");
-    $busy = textboxValue(value:"busy-par");
+    $item = textboxValue(value:"item");
+    $request = textboxValue(value:"request");
+    $soh = textboxValue(value:"soh");
+    $issued = textboxValue(value:"issued");
+    $id = textboxValue(value:"item-id");
 
-  
-
-    if($recipename && $stockonhand && $slow && $busy){
+    if($item && $request && $soh && $issued){
         
-        $sql = "INSERT INTO prep(slow,busy,id,recipe_name,stock_on_hand) VALUES('$slow',$busy,'$id','$recipename','$stockonhand')";
+        $sql = "INSERT INTO issues(item,request,issued,stock) VALUES('$item','$request','$issued','$soh')";
         if(mysqli_query($GLOBALS['conn'],$sql)){
             TextNode(classname: "success", msg: "Record Succefully Inserted...!");
         }else{
@@ -93,7 +89,7 @@ function TextNode($classname,$msg){
 
 //Get data from mysql data base
 function getData(){
-    $sql = "SELECT * FROM prep";
+    $sql = "SELECT * FROM issues";
 
     $result = mysqli_query($GLOBALS['conn'], $sql);
 
@@ -107,17 +103,16 @@ function getData(){
 
 // update data
 function UpdateData(){
-    $recipeid = textboxValue("recipe-id");
-    $recipename = textboxValue("recipe-name");
-    $stockonhand = textboxValue("stock-on-hand");
-    $slow = textboxValue(value:"slow-par");
-    $busy = textboxValue(value:"busy-par");
- 
+    $item = textboxValue(value:"item");
+    $request = textboxValue(value:"request");
+    $soh = textboxValue(value:"soh");
+    $issued = textboxValue(value:"issued");
+    $id = textboxValue(value:"item-id");
 
-    if($recipename && $stockonhand && $slow && $busy){
-        $sql = "
-                    UPDATE prep SET recipe_name='$recipename', stock_on_hand = '$stockonhand', busy='$busy', slow='$slow'  WHERE id='$recipeid';                    
+    if($item && $request && $soh && $issued){
+        $sql = " UPDATE issues SET item='$item', request='$request', stock='$soh', issued='$issued'  WHERE id='$id';                    
         ";
+ 
 
         if(mysqli_query($GLOBALS['conn'], $sql)){
             TextNode("success", "Data Successfully Updated");
@@ -134,15 +129,14 @@ function UpdateData(){
 
 
 function deleteRecord(){
-    $recipeid = (int)textboxValue("recipe-id");
-    $recipename = textboxValue("recipe-name");
-    $stockonhand = textboxValue("stock-on-hand");
-    $slow = textboxValue(value:"slow-par");
-    $busy = textboxValue(value:"busy-par");
+    $item = textboxValue(value:"item");
+    $request = textboxValue(value:"request");
+    $soh = textboxValue(value:"soh");
+    $issued = textboxValue(value:"issued");
+    $id = textboxValue(value:"item-id");
 
-
-    if($recipename && $stockonhand && $slow && $busy){
-    $sql = "DELETE FROM prep WHERE id=$recipeid";
+    if($item && $request && $soh && $issued){
+    $sql = "DELETE FROM issues WHERE id=$id";
    
 
     if(mysqli_query($GLOBALS['conn'], $sql)){
@@ -176,7 +170,7 @@ function deleteBtn(){
 
 
 function deleteAll(){
-    $sql = "DELETE FROM prep";
+    $sql = "DELETE FROM issues";
 
     if(mysqli_query($GLOBALS['conn'], $sql)){
         TextNode("success","All Record deleted Successfully...!");
@@ -185,7 +179,7 @@ function deleteAll(){
     }
 }
 
-$manufacture;
+
 // set id to textbox
 function setID(){
     $getid = getData();
@@ -197,11 +191,10 @@ function setID(){
     }
     return ($id + 1);
 }
-  //  PREP UPDATE 
-  if(isset($_POST['daily-orders'])){
+if(isset($_POST['submit'])){
     $date = date('Y/m/d H:i:s'); 
           
-    $sql = "UPDATE daily_time SET updated_at='$date';";
+    $sql = "UPDATE issues_time SET updated_at='$date';";
        if(mysqli_query($GLOBALS['conn'],$sql)){
            TextNode(classname: "success", msg: "Data Succefully Submited...!");
    }else{
@@ -210,16 +203,15 @@ function setID(){
     }
   
   
-    $sql7 = "SELECT * FROM daily_time";
+    $sql7 = "SELECT * FROM issues_time";
           
     //get the query result
     $result = mysqli_query($conn, $sql7);
   
    //fetch result in array format
-    $daily = mysqli_fetch_assoc($result);
+    $issues = mysqli_fetch_assoc($result);
 
 ?>
-
  <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -228,7 +220,7 @@ function setID(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Daily | Orders</title>
+        <title>Issues</title>
        
         <link href="css/styles.css" rel="stylesheet" />
        
@@ -318,42 +310,31 @@ function setID(){
         <main class="pt-3 mt-5 section">
             <div class="container text-center text-muted">
             <p id="daily-prep" style="display: none;"></p>
-                <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-file-invoice"></i> Daily Orders</h2>
+                <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-sheet-plastic"></i> Issues</h2>
                 
                 <div class="d-flex justify-content-center">
-                <form action="daily-orders.php" method="post" class="w-50">
+                <form action="issues.php" method="post" class="w-50">
                     <div class="py-2">
                     
-                    <div class="input-group mb-3">
-  <label class="input-group-text bg-danger" for="inputGroupSelect01"><i class="fa-solid fa-square-parking text-white"></i></label>
-  <select class="form-select bg-dark text-white" id="inputGroupSelect01" name="par">
-    <option value="slow">Slow</option>
-    <option value="busy">Busy</option>
-  </select>
-</div>
-<div class="d-flex par mb-3">
-                    <div class="input-group par-input">
-                     <span class="input-group-text text-white bg-danger" id="basic-addon1"><i class="fa-solid fa-cart-arrow-down"></i></span>
-                     <input type="text" class="form-control bg-white text-muted bold" step="0.01" min="0" name="slow-par" placeholder="Slow" aria-label="Request" aria-describedby="basic-addon1">
-                  </div>
-                  <div class="input-group par-input">
-                     <span class="input-group-text text-white bg-danger" id="basic-addon1">
- <i class="fa-solid fa-cart-plus"></i></span>
-
-                    <input type="text" class="form-control bg-white text-muted bold " step="0.01" min="0"  name="busy-par" placeholder="Busy" aria-label="Request" aria-describedby="basic-addon1">
-                    </div>
-        </div>
-                    <div class="input-group mb-3" style="display: none;">
-                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
-                    <input type="text" autocomplete="on" class="form-control bg-light text-white" name="recipe-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon1">
+                    <div class="input-group mb-3" style="display: none">
+                     <span class="input-group-text bg-danger" id="basic-addon144"><i class="fa-solid fa-receipt text-white"></i></span>
+                    <input type="text" class="form-control bg-light text-muted " name="item-id" placeholder="Item" aria-label="Recipeee" aria-describedby="basic-addon144">
                     </div>
                     <div class="input-group mb-3">
                      <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
-                    <input type="text" class="form-control bg-light text-muted " name="recipe-name" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control bg-light text-muted " name="item" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                      <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-file text-white"></i></span>
-                    <input type="number" class="form-control bg-light text-muted " step="0.01" min="0"  name="stock-on-hand" placeholder="Count" aria-label="Request" aria-describedby="basic-addon1">
+                    <input type="number" class="form-control bg-light text-muted "  name="request" placeholder="Request" aria-label="Request" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-file text-white"></i></span>
+                    <input type="number" class="form-control bg-light text-muted "  name="issued" placeholder="Issued" aria-label="Request" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-file text-white"></i></span>
+                    <input type="number" class="form-control bg-light text-muted "  name="soh" placeholder="Stock On Hold" aria-label="Request" aria-describedby="basic-addon1">
                     </div>
                     </div>
                     <div class="d-flex btn-group-prep justify-content-center">
@@ -373,8 +354,9 @@ function setID(){
                         <tr>
                             <th>Id</th>
                             <th>Item</th>
-                            <th>Count</th>
-                            <th>Order</th>
+                            <th>Req</th>
+                            <th>Issued</th>
+                            <th>S.H.O</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -382,46 +364,29 @@ function setID(){
                         
                         <?php
                             if(isset($_POST['read'])){
-                             
-                                $_SESSION['par'] = $_POST['par'];
                                 $result = getData();
                                 if($result){
                                     $i=0;
                                while($row = mysqli_fetch_assoc($result)){    
                                   
-                                   $i++;
-                                   $id = $row['id']; 
-                                    
-                                  
-                              
-                                   ?>
+                                $i++;
+                                ?>
+                             <tr>
+                             <td style="display: none;" data-id="<?php echo $row['id']; ?>"><?php 
+                                           
+                                           echo $row['id'];
+                                        ?></td>
+                                        <td ><?php 
+                                          
+                                           echo $i;
+                                        ?></td>
                                  
-                                <tr>
-                      
-                                         <td style="display: none;" data-id="<?php echo $row['id']; ?>"><?php 
-                                           
-                                            echo $row['id'];
-                                         ?></td>
-                                         <td ><?php 
-                                           
-                                            echo $i;
-                                         ?></td>
-                                         <td data-id="<?php echo $row['id']; ?>" style="display: none;"><?php echo $row['slow']?></td>
-                                         <td data-id="<?php echo $row['id']; ?>" style="display: none;"><?php echo $row['busy']?></td>
-                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['recipe_name']?></td>
-                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['stock_on_hand']?></td>
-                                         <td data-id="<?php echo $row['id']; ?>"><?php 
-                                           if ($_POST['par'] == 'slow'){
-                                            $manufacture =  $row['slow'] - $row['stock_on_hand'] ;
-                                            $sql="UPDATE prep SET manufacture='$manufacture' WHERE id='$id';";
-                                        } 
                                         
-                                        if ($_POST['par'] == 'busy'){
-                                            $manufacture =  $row['busy'] - $row['stock_on_hand'] ;
-                                            $sql="UPDATE prep SET manufacture='$manufacture' WHERE id='$id';";
-                                              
-                                        }
-                                         echo $manufacture; ?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['item']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['request']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['issued']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['stock']?></td>
+                                        
                                          <td ><a href="#daily-orders"><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></a></td>
                                      </tr>
                                      <?php 
@@ -433,8 +398,8 @@ function setID(){
                     </tbody>
                 </table>
             </div>
-            <form action="daily-orders.php" method="POST">
-                            <button type="submit" class="btn-info rounded fw-bold ps-2 pe-2" name="daily-orders"> Submit</button>
+            <form action="issues.php" method="POST">
+                            <button type="submit" class="btn-info rounded fw-bold ps-2 pe-2" name="submit"> Submit</button>
             </form>
             </div>
                         </main>
@@ -443,7 +408,7 @@ function setID(){
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>
-            <script src="main2.js"></script>
+            <script src="issues.js"></script>
 
     </body>
 </html> 

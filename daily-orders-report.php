@@ -3,90 +3,14 @@
 use LDAP\Result;
 
 session_start();
+$par = $_SESSION['par']; 
+
 //connection
 include('config/db_connect.php');
 
-
-if(isset($_POST['manager-report'])){
-    $bar = textboxValue("bar-staff");
-    $kitchen = textboxValue("kitchen-staff");
-    $floor = textboxValue("floor-staff");
-    $service = textboxValue("service");
-    $items = textboxValue("items");
-    $breakages = textboxValue("breakages"); 
-    $date = date('Y/m/d H:i:s'); 
-
-    if($bar && $kitchen && $floor && $service && $items && $breakages){
-      
-        $sql = "UPDATE test SET floors='$floor', bar='$bar', kitchen='$kitchen', services='$service', items='$items', breakages='$breakages';"; 
-        $sql2 = "UPDATE test SET updated_at='$date';"; 
-       
-       
-                // $sql2 = "INSERT INTO team(updated_at) VALUES('$date')";
-       
-        if(mysqli_query($GLOBALS['conn'], $sql)){
-            TextNode("success", "Data Successfully Submited");
-        }else{
-            TextNode("error", "Enable to Update Data");
-        }
-
-    }else{
-        TextNode("error", "Empty inputs not allowed");
-    }
-
-}
-$sql3 = "SELECT * FROM test";
-        
-//get the query result
-$result3 = mysqli_query($conn, $sql3);
-
-//fetch result in array format
-$shiftreport = mysqli_fetch_assoc($result3);
-
-
-
-
-function inputElement($icon, $placeholder, $name, $value){
-    $ele = "
-        
-        <div class=\"input-group mb-2\">
-                        <div class=\"input-group-prepend\">
-                            <div class=\"input-group-text bg-warning\">$icon</div>
-                        </div>
-                        <input type=\"text\" name='$name' value='$value' autocomplete=\"off\" placeholder='$placeholder' class=\"form-control\" id=\"inlineFormInputGroup\" placeholder=\"Username\">
-                    </div>
-    
-    ";
-    echo $ele;
-}
-
-function buttonElement($btnid, $styleclass, $text, $name, $attr){
-    $btn = "
-        <button name='$name' '$attr' class='$styleclass' id='$btnid'>$text</button>
-    ";
-    echo $btn;
-}
-
-
-
-function textboxValue($value){
-    $textbox = mysqli_real_escape_string($GLOBALS['conn'],trim($_POST[$value]));
-    if(empty($textbox)){
-        return false;
-    }else{
-        return $textbox;
-    }
-}
-
-//messages
-function TextNode($classname,$msg){
-    $element = "<h6 class='$classname'>$msg</h6>";
-    echo $element;
-}
-
 //Get data from mysql data base
 function getData(){
-    $sql = "SELECT * FROM prep2";
+    $sql = "SELECT * FROM prep";
 
     $result = mysqli_query($GLOBALS['conn'], $sql);
 
@@ -95,7 +19,13 @@ function getData(){
     }
 }
 
+$sql3 = "SELECT * FROM daily_time";
+        
+//get the query result
+$result3 = mysqli_query($conn, $sql3);
 
+//fetch result in array format
+$daily = mysqli_fetch_assoc($result3);
 
 
 
@@ -113,7 +43,15 @@ function setID(){
     }
     return ($id + 1);
 }
+// function getData(){
+//     $sql = "SELECT * FROM prep";
 
+//     $result = mysqli_query($GLOBALS['conn'], $sql);
+
+//     if(mysqli_num_rows($result) > 0){
+//         return $result;
+//     }
+// }
 
 ?>
 
@@ -125,11 +63,10 @@ function setID(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Manager Report</title>
+        <title>Daily | Orders</title>
        
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="print.css" type="text/css" media="print">
-        
         <link rel="stylesheet" href="font-awesome/all.min.css">
         <link rel="stylesheet" href="font-awesome/fontawesome.min.css">
         <script src="https://kit.fontawesome.com/0fba6da19b.js" crossorigin="anonymous"></script>
@@ -235,7 +172,6 @@ function setID(){
 ::-webkit-scrollbar-track{
     background: #0D0A13;
 }
-	
     </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section mb-5 pb-5">
@@ -247,63 +183,82 @@ function setID(){
      
                 <!-- TEAM ON SHIFT REPORT -->
                 <div class="report-group pt-1">
-                <h4 class=" fw-bold text-center" > Manager Shift Report</h4>
-
                      
                      <div class="update-container border-secondary">
+                       
                      <div class="update-at ">
-                    <h6 class="">Updated at: <?php echo htmlspecialchars($shiftreport['updated_at'])?></h6>  
+                    <h6 class="">Updated at: <?php echo htmlspecialchars($daily['updated_at'])?></h6>  
                    </div>
                    
                      </div>
-                     <h5 class="report-title fw-bold text-center" >Team on shift</h5>
+                     <h5 class="report-title fw-bold text-center" > Daily orders Report</h5>
                      <div class="team-section report-section">
-                      <div class="team-position text-start">
-                        <h6 class="">MOD:</h6>
-                        <h6 class="">Floor:</h6>
-                        <h6 class="">Bar:</h6>
-                        <h6 class="">Kitchen:</h6>
-                    </div>
-                      <div class="team-name text-end">
-                        <h6><?php echo htmlspecialchars($shiftreport['manager'])?> </h6>
-                        <h6><?php echo htmlspecialchars($shiftreport['floors'])?></h6> 
-                        <h6><?php echo htmlspecialchars($shiftreport['bar'])?></h6> 
-                        <h6><?php echo htmlspecialchars($shiftreport['kitchen'])?></h6>
-                      </div> 
+                        
+                     <table class="table table-striped ">
+                    <thead class="thead-dark text-muted">
+                        <tr>
+                            <th>Id</th>
+                            <th>Item</th>
+                            <th>Count</th>
+                            <th>Order</th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        
+                        <?php
+                      
+                                $result = getData();
+                                if($result){
+                                    $i=0;
+                               while($row = mysqli_fetch_assoc($result)){    
+                                  
+                                   $i++;
+
+                                
+                                   ?>
+                                 
+                                <t>
+                      
+                                         <td style="display: none;" data-id="<?php echo $row['id']; ?>"><?php 
+                                           
+                                            echo $row['id'];
+                                         ?></td>
+                                         <td ><?php 
+                                           
+                                            echo $i;
+                                         ?></td>
+                                         <td data-id="<?php echo $row['id']; ?>" style="display: none;"><?php echo $row['slow']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>" style="display: none;"><?php echo $row['busy']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['recipe_name']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php echo $row['stock_on_hand']?></td>
+                                         <td data-id="<?php echo $row['id']; ?>"><?php 
+                                           if ($par == 'slow'){
+                                            $manufacture =  $row['slow'] - $row['stock_on_hand'] ;
+                                            
+                                        } 
+                                        
+                                        if ($par == 'busy'){
+                                            $manufacture =  $row['busy'] - $row['stock_on_hand'] ;
+                                            
+                                              
+                                        }
+                                         echo $manufacture; ?></td>
+                                        
+                                     </tr>
+                                     <?php 
+                                    }
+                                }
+                               
+                            
+                        ?>
+                    </tbody>
+                </table>
                      </div>
                 </div>
-             
-          
-             
-                             <!-- SERVICE REPORT -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center" >Service</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                             <!-- 86 Item REPORT -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center" >86 Items</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                             <!-- Breakages and  Spillage -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center">Breakages and Spillage</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                <div class="text-center">
+                <div class="text-center mt-3">
                      <button onclick="window.print();" id="print-btn" class="btn-danger ps-3 pe-3 btn-md fw-bold rounded">Print</button>
                 </div>
-               
-                
                 <div class="text-center text-muted py-2 copy-right">&copy;<?php // Store the year to
 // the variable
 $year = date("Y"); 

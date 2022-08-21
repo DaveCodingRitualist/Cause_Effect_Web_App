@@ -44,7 +44,7 @@ if(isset($_POST['update'])){
     $saturday = textboxValue("saturday");
     $sunday = textboxValue("sunday");
    
-    if($itemid && $itemname && $monday && $tuesday && $wednesday && $thursday && $friday && $saturday && $sunday){
+    if($itemid && $itemname){
         $sql = " UPDATE rail SET item='$itemname', monday='$monday', tuesday='$tuesday', wednesday='$wednesday', thursday='$thursday', friday='$friday', saturday='$saturday', sunday='$sunday' WHERE id='$itemid';                 
         ";
 
@@ -71,7 +71,7 @@ if(isset($_POST['delete'])){
     $saturday = textboxValue("saturday");
     $sunday = textboxValue("sunday");
    
-    if($itemid && $itemname && $monday && $tuesday && $wednesday && $thursday && $friday && $saturday){
+    if($itemid && $itemname){
     $sql = "DELETE FROM rail WHERE id=$itemid";
     if(mysqli_query($GLOBALS['conn'], $sql)){
         TextNode("success","Record Deleted Successfully...!");
@@ -224,7 +224,7 @@ function setID(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Rail Count</title>
+        <title>Rail|Count</title>
        
         <link href="css/styles.css" rel="stylesheet" />
        
@@ -310,42 +310,60 @@ function setID(){
              width: 100%;
            }
         
-           /* @media(max-width: 480px){
-            .count-day input{
-                width: 50px;
-           }
-           .count-day{
-            margin: auto;
-           }
-        } */
-   
+  
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
+    /* @media(max-width: 1200px) and (min-width: 768px){
+        form{
+            width: 50%;
+        }
+    }
+    @media(max-width: 768px) and (min-width: 480px){
+        form{
+            width: 100%;
+        }
+    }
+    @media(min-width: 480px){
+        form{
+            width: 100%;
+        }
+    } */
          
         </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section">
-            <div class="container text-center text-muted justify-contents-center">
+            <div class="container-fluid text-center text-muted justify-contents-center">
             <p id="daily-prep" style="display: none;"></p>
                 <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-file-invoice"></i> Rail count</h2>
                 
                 
                 <div class="d-flex">
-                <form action="rail-count.php" method="post" >
+                <form action="rail-count.php" class="container-fluid container-lg container-xl" method="post" >
                     <div class="mb-2">
                     <div class=" item-and-value ">
-                    <div class="input-group mb-2" style="display: none;">
-                     <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-id-badge text-white"></i></span>
-                    <input type="text" autocomplete="on" class="form-control bg-light text-white" name="item-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon1">
-                    </div>
+                    <div class="input-group mb-3" style="display: none;" >
+         <span class="input-group-text bg-danger"><i class="fa-solid fa-id-badge text-white"></i></span>
+         <input type="text"  autocomplete="on" class="form-control bg-light text-muted" name="item-id" placeholder="ID" aria-label="id" aria-describedby="basic-addon11">
+        </div>
                     
                     </div>
             </div>
 
             <!-- bootstrap table -->
-            <div class="d-flex table-data">
+            <div class="d-flex container-fluid table-data">
            
                   </div>
                   <div class="btn-group-prep mb-2 justify-content-center">
-                  <div class="input-group my-2 item-name w-50 d-flex" style="margin: auto;">
+                  <div class="input-group my-2 item-name w-70 d-flex" style="margin: auto;">
                      <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
                     <input type="text" class="form-control bg-light text-muted " name="item-name" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
@@ -433,7 +451,8 @@ function setID(){
                         
                        
                     </div>
-            </div> </form>
+            </div> 
+        </form>
                         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
        

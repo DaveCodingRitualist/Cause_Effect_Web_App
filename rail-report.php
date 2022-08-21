@@ -56,7 +56,7 @@ function setID(){
         <title>Rail | Count</title>
        
         <link href="css/styles.css" rel="stylesheet" />
-       
+        <link rel="stylesheet" href="print.css" type="text/css" media="print">
         <link rel="stylesheet" href="font-awesome/all.min.css">
         <link rel="stylesheet" href="font-awesome/fontawesome.min.css">
         <script src="https://kit.fontawesome.com/0fba6da19b.js" crossorigin="anonymous"></script>
@@ -151,7 +151,17 @@ function setID(){
            }
    
 }
-
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
 	
     </style>
     <?php include('template/admin-header.php');?>
@@ -166,6 +176,7 @@ function setID(){
                 <div class="report-group pt-1">
                      
                      <div class="update-container border-secondary">
+                       
                      <div class="update-at ">
                     <h6 class="">Updated at: <?php echo htmlspecialchars($railreport['updated_at'])?></h6>  
                    </div>
@@ -229,7 +240,9 @@ function setID(){
                 </table>
                      </div>
                 </div>
-                
+                <div class="text-center mt-3">
+                     <button onclick="window.print();" id="print-btn" class="btn-danger ps-3 pe-3 btn-md fw-bold rounded">Print</button>
+                </div>
                 <div class="text-center text-muted py-2 copy-right">&copy;<?php // Store the year to
 // the variable
 $year = date("Y"); 

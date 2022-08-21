@@ -50,121 +50,86 @@ session_start();
                 .add-recipe-btn{
                     margin-left: 1rem;
                 }
-                .par-form {
-  color: #FFFFFF;
-  font-size: .9rem;
-  width: 150px;
-  margin: auto;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  border-radius: 5px;
-  margin-top: 1rem;
-  text-align: center;
-  background: rgba(255, 255, 255, .3);
-  box-shadow: rgb(226, 168, 10);
-}
-
-.form-title {
-  width: 80vw;
-  background: rgba(0, 0, 0, .3);
-  margin: auto;
-  color: #FFFFFF;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
-  border-radius: 15px 15px 0px 0px;
-}
-
-.form-body {
-  width: 80vw;
-  max-width: 100rem;
-  height: auto;
-  /* background: rgba(255, 255, 255, .1); */
-  margin: auto;
-  align-items: center;
-  color: #FFFFFF;
-  padding-bottom: 1rem;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  z-index: -1;
-  overflow: hidden;
-}
-.form-entry1 {
-  width: 80vw;
-  background: rgba(255, 255, 255, .1);
-  height: 110px;
-  margin-bottom: 5px;
-  border-radius: 0px 0px 5px 5px;
-  z-index: 0;
-  padding-top: 10px;
-  /* padding-bottom: 10px; */
-  letter-spacing: 2px;
-  align-items: center;
-  justify-items: center;
-}
-
-.form-entry {
-  width: 80vw;
-  background: rgba(255, 255, 255, .1);
-  height: 120px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  z-index: 0;
-  padding-top: 20px;
-  letter-spacing: 2px;
-  margin-top: 10px;
-}
-
-.input {
-  /* background: rgba(255, 255, 255, .1); */
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  height: 20px;
-  border-bottom: 1px solid white;
-  color: white;
-  width: 280px;
-  background: transparent;
-  outline: none;
-  padding-top: 1px;
-}
-
-.juices-label, .input {
-  background: none;
-}
-
-.form-container {
-  padding-left: 20px;
-  background: none;
-}
-
-.submit {
-  color: white;
-  background: rgb(0, 92, 117);
-  font-size: 1rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 15px;
-  border: none;
-  margin-top: 10px;
-  outline: none;
-  cursor: pointer;
-}
-
-.submit:hover {
-  border: 1px solid white;
-} 
-.recipes-form{
-    margin: auto;
-    align-items: center;
-}
-   .recipes-submit{
-     width: 99%;
-    border-radius: 5px;
-  }
+              
   .hi-admin{
     font-size: 1rem;
   }
+  .juices {
+  border-left: 10px solid rgb(255, 255, 255);
+  border-right: 10px solid rgb(255, 255, 255);
+  background: rgb(0, 92, 117);
+}
+
+.syrups {
+  border-left: 10px solid rgb(117, 117, 133);
+  border-right: 10px solid rgb(117, 117, 133);
+  background: rgb(0, 92, 117);
+}
+
+.speedrail {
+  border-left: 10px solid rgb(194, 159, 96);
+  border-right: 10px solid rgb(194, 159, 96);
+  background: rgb(0, 92, 117);
+}
+
+.pre_mixers {
+  border-left: 10px solid rgb(71, 172, 121);
+  border-right: 10px solid rgb(71, 172, 121);
+}
+
+.infusion {
+  /* background-color:  rgb(147, 190, 190); */
+  background: rgb(170, 107, 170);
+ 
+}
+.daily {
+  /* background-color:  rgb(147, 190, 190); */
+  background: rgb(202, 202, 65);
+ 
+}
+
+.atomizers {
+  border-left: 10px solid rgb(102, 153, 153);
+  border-right: 10px solid rgb(102, 153, 153);
+}
+
+.dusters {
+  /* border-left: 10px solid rgb(202, 202, 65);
+  border-right: 10px solid rgb(202, 202, 65); */
+  background-color: rgb(143, 143, 107);
+}
+
+.tinctures {
+  border-left: 10px solid rgb(170, 107, 170);
+  border-right: 10px solid rgb(170, 107, 170);
+}
+
+.prep .garnishes {
+  border-left: 10px solid rgb(143, 143, 107);
+  border-right: 10px solid rgb(143, 143, 107);
+}
+
+.prep .sorbets {
+  border-left: 10px solid rgb(255, 102, 102);
+  border-right: 10px solid rgb(255, 102, 102);
+}
+
+.prep .others_ingrediens {
+  border-left: 10px solid rgb(204, 153, 153);
+  border-right: 10px solid rgb(204, 153, 153);
+}
+ 
+         ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
     <?php include('template/admin-header.php'); ?>
             <div id="layoutSidenav_content" class="my-bg">
@@ -176,21 +141,17 @@ session_start();
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">PREP</div>
+                                <div class="card bg-primary  text-white mb-4">
+                                    <div class="card-body">MANAGER REPORT</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Daily prep</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">weekly Prep</a>
+                                        <a class="small bg-primary text-white stretched-link  " href="shift-report.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">RAIL COUNT</div>
+                                    <div class="card-body">SPEEDRAIL COUNT</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="rail-report.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -198,25 +159,94 @@ session_start();
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">REPORTS</div>
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">OPENING PROCEDURE</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="reports.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="opening-report.php">View details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
+                                
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">UPLOAD CONTENTS</div>
+                                <div class="card bg-secondary text-white mb-4">
+                                    <div class="card-body">CLOSING PROCEDURE</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="upload-contents.php">Manage Contents</a>
+                                        <a class="small  stretched-link text-white" href="closing-report.php">View details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             
                         </div>
+                        
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success  text-white mb-4">
+                                    <div class="card-body">DAILY ORDERS</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link  " href="daily-orders-report.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-info text-white mb-4">
+                                    <div class="card-body">WEEKLY ORDERS</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small  text-white stretched-link" href="weekly-orders-report.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-light text-dark mb-4">
+                                    <div class="card-body">GLASSWARE AND SETUP</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-dark stretched-link" href="glass-report.php">View Details</a>
+                                        <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card  daily text-white mb-4">
+                                    <div class="card-body">DAILY ISSUES</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small  stretched-link text-white" href="issues-report.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card  infusion text-white mb-4">
+                                    <div class="card-body">SUPPLIES</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small  stretched-link text-white" href="supplies-report.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card dusters  text-white mb-4">
+                                    <div class="card-body">PREP</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small  stretched-link text-white" href="prep-report.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-dark text-white mb-4">
+                                    <div class="card-body">UPLOAD CONTENTS</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small  stretched-link text-white" href="upload-contents.php">Manage Contents</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
                          </div>
                 </main>
             </div>

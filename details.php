@@ -41,7 +41,7 @@ if(isset($_GET['id'])){
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Add Recipes</title>
+        <title>Cocktail</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
@@ -59,6 +59,17 @@ if(isset($_GET['id'])){
                     border: none;
                     background: brown;
                 }
+                ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
     <?php include('template/admin-header.php');?>
             <div id="layoutSidenav_content" class="my-bg">

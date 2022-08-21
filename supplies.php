@@ -936,6 +936,17 @@ function setID_(){
             background-color: blanchedalmond;
             color: #DC3545;
            }
+           ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
     
   /* display: block;
             align-items: flex-end; */

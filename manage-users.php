@@ -218,7 +218,17 @@ if(isset($_GET['id'])){
   }
   .manage-users2{
     margin-top: 100px;
-  }
+  }::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
 
 <?php include('template/admin-header.php'); ?>

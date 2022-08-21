@@ -3,6 +3,7 @@
 use LDAP\Result;
 
 session_start();
+$par = $_SESSION['par']; 
 //connection
 include('config/db_connect.php');
 if(isset($_POST['create'])){
@@ -661,7 +662,17 @@ function deleteRecord_prep(){
                 .cocktail{
                     margin-top: 1px;
                 }
-
+                ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: white;
+}
                 <style>
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
             @import '~pretty-checkbox/scss/variables';
@@ -963,6 +974,17 @@ function deleteRecord_prep(){
     font-size: .8rem;
   
 }
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
 
         </style>
@@ -1026,7 +1048,7 @@ function deleteRecord_prep(){
       <main >
             <div class="container daily-prep-modal text-center text-muted">
             <p id="daily-prep" style="display: none;"></p>
-                <h2 class="py-2 text-light bg-dark text-muted rounded " ><i class="fa-solid fa-file-invoice"></i> Daily Prep</h2>
+                <h2 class="py-2 text-light bg-dark text-muted rounded " id="prep"><i class="fa-solid fa-file-invoice"></i> Daily Prep</h2>
                 
                 <div class="justify-content-center">
                 <form action="opening.php" method="post" class="w-50">
@@ -1123,7 +1145,7 @@ function deleteRecord_prep(){
                                             }
                                             echo $manuf;
                                         //  ?></td>
-                                         <td ><a href="#daily-prep"><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></a></td>
+                                         <td ><a href="#prep"><i class="fas fa-edit btnedit" data-id="<?php echo $row['id']; ?>"></i></a></td>
                                      </tr>
                                      <?php 
                                     }

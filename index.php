@@ -26,23 +26,41 @@ session_start();
  
   <?php include('template/user-header.php'); ?>
   <style>
+     @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+     *{
+      font-family: 'Open Sans Condensed', sans-serif;
+     }      
+     .my-bg{
+            background: #0D0A13;
+
+                }
     .welcome{
   
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.1rem;
 }
+.user-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
   </style>
- 
+    
      <div class="hero pt-5">
-      <div class="text-center mt-3 ps-3">
+     <div class="user-container">
+       <div class="text-center mt-3 ps-3">
         <img src="./images/NEW - C _ E Round Logo _ Colour New tagline _ High.png" alt="" width="100px" class="CE-logo">
       </div>
-     
-          <div class="content2">
-            <span class="welcome">Hi! <?php echo $_SESSION['User']; ?>,  Welcome Back to</span>
-            <h1 >C<span id="caracter2">|</span>Ǝ
-               SMART BAR </h1>
+      <div class="py-5 text-white text-center">
+            <span class="welcome ">Hi! <?php echo $_SESSION['User']; ?>,  Welcome Back to</span>
+            <h1 >Cause<span id="caracter2">|</span>Effect
+               Smart Bar </h1>
           </div>
+      </div>
+     
+     
+          
          <div class="side-bar2 pt-5
          ">
            <img src="./images/menu.png" alt="" class="menu">

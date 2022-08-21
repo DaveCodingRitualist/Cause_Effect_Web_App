@@ -32,17 +32,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts3">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear"></i></div>
-                                User Management
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           
+                            <a class="nav-link" href="manage-users.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear"></i> </div>
+                                Manage Users
                             </a>
-                            <div class="collapse" id="collapseLayouts3" aria-labelledby="headingthree" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="addUser.php">Add User</a>
-                                    <a class="nav-link" href="manage-users.php">Manage Users</a>
-                                </nav>
-                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-book-open"></i></div>
                                 Master Recipes
@@ -76,23 +70,22 @@
                                     <a class="nav-link" href="weekly-orders.php">Weekly</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="rail-count.php">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts23" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calculator"></i></div>
-                               Speed Rail Count
-                            </a>
-                          
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts1">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Reports
+                                Count
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts1" aria-labelledby="headingtwo" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts23" aria-labelledby="headingOn" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Maintenance</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Management</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">End Over</a>
+                                    <a class="nav-link" href="rail-count.php">Speed rail</a>
+                                    <a class="nav-link" href="glass-count.php">Glassware | set up</a>
                                 </nav>
                             </div>
+                            <a class="nav-link" href="issues.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-sheet-plastic"></i> </div>
+                               Issues
+                            </a>
+<!--                            
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 User Management
@@ -123,7 +116,7 @@
                                         </nav>
                                     </div>
                                 </nav>
-                            </div>
+                            </div> -->
                             <div class="sb-sidenav-menu-heading"></div>
                             <a class="nav-link" href="manager-report.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-marker"></i></div>

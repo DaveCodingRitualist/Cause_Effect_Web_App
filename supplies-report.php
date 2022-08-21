@@ -5,44 +5,24 @@ use LDAP\Result;
 session_start();
 //connection
 include('config/db_connect.php');
-
-
-if(isset($_POST['manager-report'])){
-    $bar = textboxValue("bar-staff");
-    $kitchen = textboxValue("kitchen-staff");
-    $floor = textboxValue("floor-staff");
-    $service = textboxValue("service");
-    $items = textboxValue("items");
-    $breakages = textboxValue("breakages"); 
-    $date = date('Y/m/d H:i:s'); 
-
-    if($bar && $kitchen && $floor && $service && $items && $breakages){
-      
-        $sql = "UPDATE test SET floors='$floor', bar='$bar', kitchen='$kitchen', services='$service', items='$items', breakages='$breakages';"; 
-        $sql2 = "UPDATE test SET updated_at='$date';"; 
-       
-       
-                // $sql2 = "INSERT INTO team(updated_at) VALUES('$date')";
-       
-        if(mysqli_query($GLOBALS['conn'], $sql)){
-            TextNode("success", "Data Successfully Submited");
-        }else{
-            TextNode("error", "Enable to Update Data");
-        }
-
-    }else{
-        TextNode("error", "Empty inputs not allowed");
-    }
-
+if(isset($_POST['create'])){
+  
+    createdata();
+   
 }
-$sql3 = "SELECT * FROM test";
-        
-//get the query result
-$result3 = mysqli_query($conn, $sql3);
 
-//fetch result in array format
-$shiftreport = mysqli_fetch_assoc($result3);
+if(isset($_POST['update'])){
 
+    UpdateData();
+}
+
+if(isset($_POST['delete'])){
+    deleteRecord();
+}
+
+if(isset($_POST['deleteall'])){
+    deleteAll();
+}
 
 
 
@@ -69,6 +49,27 @@ function buttonElement($btnid, $styleclass, $text, $name, $attr){
 
 
 
+function createData(){
+    
+    $item = textboxValue(value:"item");
+    $bar = textboxValue(value:"bar");
+    $id = textboxValue(value:"item-id");
+    $storeroom = textboxValue(value:"store-room");
+    if($item && $bar && $storeroom ){
+        
+        $sql = "INSERT INTO glass(item,bar,store) VALUES('$item','$bar','$storeroom')";
+        if(mysqli_query($GLOBALS['conn'],$sql)){
+            TextNode(classname: "success", msg: "Record Succefully Inserted...!");
+        }else{
+            echo "Error";
+        }
+        
+    }else{
+        TextNode(classname: "error", msg: "Provide Data in the Textbox");
+    }
+
+}
+
 function textboxValue($value){
     $textbox = mysqli_real_escape_string($GLOBALS['conn'],trim($_POST[$value]));
     if(empty($textbox)){
@@ -86,7 +87,7 @@ function TextNode($classname,$msg){
 
 //Get data from mysql data base
 function getData(){
-    $sql = "SELECT * FROM prep2";
+    $sql = "SELECT * FROM glass";
 
     $result = mysqli_query($GLOBALS['conn'], $sql);
 
@@ -98,8 +99,79 @@ function getData(){
 
 
 
+// update data
+function UpdateData(){
+    $item = textboxValue(value:"item");
+    $bar = textboxValue(value:"bar");
+    $id = textboxValue(value:"item-id");
+    $storeroom = textboxValue(value:"store-room");
+    if($item && $bar && $storeroom ){
+        $sql = " UPDATE glass SET item='$item', bar='$bar', store='$storeroom'  WHERE id='$id';                    
+        ";
+ 
+
+        if(mysqli_query($GLOBALS['conn'], $sql)){
+            TextNode("success", "Data Successfully Updated");
+        }else{
+            TextNode("error", "Enable to Update Data");
+        }
+
+    }else{
+        TextNode("error", "Select Data Using Edit Icon");
+    }
 
 
+}
+
+
+function deleteRecord(){
+    $item = textboxValue(value:"item");
+    $bar = textboxValue(value:"bar");
+    $id = textboxValue(value:"item-id");
+    $storeroom = textboxValue(value:"store-room");
+    if($item && $bar && $storeroom ){
+    $sql = "DELETE FROM glass WHERE id=$id";
+   
+
+    if(mysqli_query($GLOBALS['conn'], $sql)){
+        TextNode("success","Record Deleted Successfully...!");
+    }
+    else{
+        TextNode("error", "Select Data Using Edit Icon");
+    }
+ 
+    }
+    else{
+        TextNode("error", "Select Data Using Edit Icon");
+    }
+}
+
+function deleteBtn(){
+    $result = getData();
+    $i = 0;
+    if($result){
+        while ($row = mysqli_fetch_assoc($result)){
+            $i++;
+            if($i > 3){
+                buttonElement("btn-deleteall", "btn del_all btn-prep" ,"<i class='fa-solid fa-eraser'></i>", "deleteall", "All");
+
+
+                return;
+            }
+        }
+    }
+}
+
+
+function deleteAll(){
+    $sql = "DELETE FROM glass";
+
+    if(mysqli_query($GLOBALS['conn'], $sql)){
+        TextNode("success","All Record deleted Successfully...!");
+    }else{
+        TextNode("error","Something Went Wrong Record cannot deleted...!");
+    }
+}
 
 
 // set id to textbox
@@ -113,10 +185,27 @@ function setID(){
     }
     return ($id + 1);
 }
-
+if(isset($_POST['glass'])){
+    $date = date('Y/m/d H:i:s'); 
+          
+    $sql = "UPDATE glass_time SET updated_at='$date';";
+       if(mysqli_query($GLOBALS['conn'],$sql)){
+           TextNode(classname: "success", msg: "Data Succefully Submited...!");
+   }else{
+       echo "Error";
+   }
+    }
+  
+  
+    $sql7 = "SELECT * FROM glass_time";
+          
+    //get the query result
+    $result = mysqli_query($conn, $sql7);
+  
+   //fetch result in array format
+    $glass = mysqli_fetch_assoc($result);
 
 ?>
-
  <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -125,11 +214,10 @@ function setID(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Manager Report</title>
+        <title>Glassware Count</title>
        
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="print.css" type="text/css" media="print">
-        
         <link rel="stylesheet" href="font-awesome/all.min.css">
         <link rel="stylesheet" href="font-awesome/fontawesome.min.css">
         <script src="https://kit.fontawesome.com/0fba6da19b.js" crossorigin="anonymous"></script>
@@ -234,8 +322,7 @@ function setID(){
 }
 ::-webkit-scrollbar-track{
     background: #0D0A13;
-}
-	
+}	
     </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section mb-5 pb-5">
@@ -246,64 +333,63 @@ function setID(){
         </div>
      
                 <!-- TEAM ON SHIFT REPORT -->
-                <div class="report-group pt-1">
-                <h4 class=" fw-bold text-center" > Manager Shift Report</h4>
-
+                <div class="report-group pt-3">
                      
-                     <div class="update-container border-secondary">
-                     <div class="update-at ">
-                    <h6 class="">Updated at: <?php echo htmlspecialchars($shiftreport['updated_at'])?></h6>  
-                   </div>
-                   
-                     </div>
-                     <h5 class="report-title fw-bold text-center" >Team on shift</h5>
+                     
+                     <h4 class="report-title fw-bold text-center" style="font-size: 1.3rem;"> Supplies</h4>
                      <div class="team-section report-section">
-                      <div class="team-position text-start">
-                        <h6 class="">MOD:</h6>
-                        <h6 class="">Floor:</h6>
-                        <h6 class="">Bar:</h6>
-                        <h6 class="">Kitchen:</h6>
-                    </div>
-                      <div class="team-name text-end">
-                        <h6><?php echo htmlspecialchars($shiftreport['manager'])?> </h6>
-                        <h6><?php echo htmlspecialchars($shiftreport['floors'])?></h6> 
-                        <h6><?php echo htmlspecialchars($shiftreport['bar'])?></h6> 
-                        <h6><?php echo htmlspecialchars($shiftreport['kitchen'])?></h6>
-                      </div> 
+                     <table class="table table-striped">
+        <thead class="thead-dark text-muted">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Item</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            
+            <?php
+                
+                    $sql5 = "SELECT * FROM supplies";
+                    $result5 = mysqli_query($GLOBALS['conn'], $sql5);
+                    if($result5){
+                             $i=0;
+                        while($row = mysqli_fetch_assoc($result5)){    
+                            $i++;
+                            ?>
+                         <tr></td>
+                                        <td ><?php 
+                                          
+                                           echo $i;
+                                        ?></td>
+                         <td style="display: none;" data-id="<?php echo $row['id']; ?>"><?php 
+                                           
+                                           echo $row['id'];
+                                        ?>
+                             <td data-id="<?php echo $row['id']; ?>"><?php echo $row['name']?></td>
+                             <td data-id="<?php echo $row['id']; ?>"><?php echo $row['item']?></td>
+                             <td data-id="<?php echo $row['id']; ?>"><?php echo $row['mobile']?></td>
+                             <td data-id="<?php echo $row['id']; ?>"><?php echo $row['email']?></td>
+                             
+                         </tr>
+                         <?php  
+                          }
+                      
+                        }
+                    
+
+            ?>
+        </tbody>
+    </table> 
+                    
                      </div>
                 </div>
-             
-          
-             
-                             <!-- SERVICE REPORT -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center" >Service</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                             <!-- 86 Item REPORT -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center" >86 Items</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                             <!-- Breakages and  Spillage -->
-                             <div class="report-group endover pt-1 report-section">
-                 
-                     <h5 class="report-title fw-bold text-center">Breakages and Spillage</h5>
-                     <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
-                     </div>
-                </div>
-                <div class="text-center">
+                <div class="text-center mt-3">
                      <button onclick="window.print();" id="print-btn" class="btn-danger ps-3 pe-3 btn-md fw-bold rounded">Print</button>
                 </div>
-               
-                
                 <div class="text-center text-muted py-2 copy-right">&copy;<?php // Store the year to
 // the variable
 $year = date("Y"); 

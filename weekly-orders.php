@@ -3,6 +3,8 @@
 use LDAP\Result;
 
 session_start();
+$par = $_SESSION['par']; 
+echo $par;
 //connection
 include('config/db_connect.php');
 if(isset($_POST['create'])){
@@ -195,7 +197,17 @@ function setID(){
     }
     return ($id + 1);
 }
-
+//  PREP UPDATE 
+if(isset($_POST['daily-orders'])){
+    $date = date('Y/m/d H:i:s'); 
+          
+    $sql = "UPDATE weekly_time SET updated_at='$date';";
+       if(mysqli_query($GLOBALS['conn'],$sql)){
+           TextNode(classname: "success", msg: "Data Succefully Submited...!");
+   }else{
+       echo "Error";
+   }
+    }
 
 ?>
 
@@ -277,6 +289,19 @@ function setID(){
             background-color: blanchedalmond;
             color: #DC3545;
            }
+
+}
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section">
@@ -393,7 +418,9 @@ function setID(){
                     </tbody>
                 </table>
             </div>
-            
+            <form action="weekly-orders.php" method="POST">
+                            <button type="submit" class="btn-info rounded fw-bold ps-2 pe-2" name="daily-orders"> Submit</button>
+            </form>
             </div>
                         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

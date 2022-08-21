@@ -44,6 +44,7 @@ mysqli_close($conn);
         <title>Recipes</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="scrollbar.css" type="text/css">
         <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/0fba6da19b.js" crossorigin="anonymous"></script>
@@ -61,42 +62,17 @@ mysqli_close($conn);
   box-sizing: border-box;
   /* background: rgb(25, 39, 53); */
 }
-/* .input-group2{
-    width: 50%;
-    margin: auto;
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
 }
-.search-container{
-        width: 100%;
-        display: flex;
-        background: rgba(0, 92, 117, 0.5);
-       position: fixed;
-       margin-bottom: 200px;
-       height: auto;
-      
-       z-index: 1;
-    }
-    .recipes-container{
-        margin-top: 190px;
-    }
-
-    .search-input{
-        width: 88%;
-        border-radius: 15px;
-        padding-bottom: 0px;
-        padding-top: 0px;  
-      
-
-    }
-    .search-submit{
-        width: 8%;
-        
-    }
-    .search-submit1{
-       margin-left: 2px;
-       height: 45px;
-        
-    } */
-
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
             .recipes{
             font-family: 'Open Sans Condensed', sans-serif;
             width: 100%;

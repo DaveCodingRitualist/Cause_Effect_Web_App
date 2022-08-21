@@ -59,6 +59,17 @@ if(isset($_GET['id'])){
                     border: none;
                     background: brown;
                 }
+                ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
         </style>
     <?php include('template/admin-header.php');?>
             <div id="layoutSidenav_content" class="my-bg">

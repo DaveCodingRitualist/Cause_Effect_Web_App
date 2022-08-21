@@ -141,11 +141,17 @@ mysqli_close($conn);
        border: none;
 
     }
-    /* .search{
-        width: 10px;
-    } */
-            
-            
+    ::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}  
   .hi-admin{
     font-size: 1rem;
   }
@@ -184,7 +190,7 @@ mysqli_close($conn);
       
             
 <div class="container-fluid recipes-container mt-3 pt-5">
-<h2 class="py-2 text-light bg-dark text-muted rounded text-center mb-4"><i class="fa-solid fa-book-open-reader"></i> cocktails Recipes</h2>
+<h2 class="py-2 text-light bg-dark text-muted rounded text-center mb-4"><i class="fa-solid fa-book-open-reader"></i> Cocktails Recipes</h2>
 <div class="row">
 <?php foreach($recipes as $recipe): ?>
 <div class="col-6 col-lg-3 col-md-4">

@@ -297,7 +297,17 @@ function setID(){
 .submit{
     width: 100%;
 }
-
+::-webkit-scrollbar{
+    width: 15px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+    background: #0D0A13;
+}
 
 	
     </style>
