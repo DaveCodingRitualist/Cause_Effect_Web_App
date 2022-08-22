@@ -318,8 +318,24 @@ function setID(){
             margin: auto;
            }
         } */
-   
-         
+   .count-day input{
+    background-color: rgb(143, 191, 204);
+   }
+  ::placeholder {
+    color: white;
+  }
+  /* ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
+}      */
         </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section">
@@ -349,14 +365,14 @@ function setID(){
                      <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
                     <input type="text" class="form-control bg-light text-muted " name="item-name" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
-                  <div class="d-flex mb-2 count-day">
-                     <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="wednesday" placeholder="W" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="thursday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
+                  <div class="d-flex mb-2 count-day text-white">
+                     <input type="number" class="form-control  me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control   me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control  me-1" step="0.01" min="0"  name="wednesday" placeholder="W" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control  me-1" step="0.01" min="0"  name="thursday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control   me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control   me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control   me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
                   </div>
                   <div class="d-flex" style="justify-content: ;">
                     <button class="btn-success rounded btn-prep me-1" name="create"><i class="fa-solid fa-plus"></i></button>
