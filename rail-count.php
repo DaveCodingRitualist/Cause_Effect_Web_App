@@ -322,6 +322,9 @@ function setID(){
 ::-webkit-scrollbar-track{
     background: #0D0A13;
 }
+.count-day input{
+    background-color: rgb(143, 191, 204);
+   }
     /* @media(max-width: 1200px) and (min-width: 768px){
         form{
             width: 50%;
@@ -368,13 +371,13 @@ function setID(){
                     <input type="text" class="form-control bg-light text-muted " name="item-name" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
                   <div class="d-flex mb-2 count-day">
-                     <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="wednesday" placeholder="W" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="thursday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control bg-light text-muted me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
+                     <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="wednesday" placeholder="W" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="thursday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
                   </div>
                   <div class="d-flex" style="justify-content: ;">
                     <button class="btn-success rounded btn-prep me-1" name="create"><i class="fa-solid fa-plus"></i></button>
