@@ -280,7 +280,7 @@ function setID(){
                  
                      <h5 class="report-title fw-bold text-center" >Service</h5>
                      <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
+                     <p style=" word-wrap: break-word;" class="text-start"><?php echo htmlspecialchars($shiftreport['services'])?></p>
                      </div>
                 </div>
                              <!-- 86 Item REPORT -->
@@ -288,7 +288,7 @@ function setID(){
                  
                      <h5 class="report-title fw-bold text-center" >86 Items</h5>
                      <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
+                     <p style=" word-wrap: break-word;" class="text-start"><?php echo htmlspecialchars($shiftreport['services'])?></p>
                      </div>
                 </div>
                              <!-- Breakages and  Spillage -->
@@ -296,7 +296,7 @@ function setID(){
                  
                      <h5 class="report-title fw-bold text-center">Breakages and Spillage</h5>
                      <div class="mb-1">
-                     <p style=" word-wrap: break-word;"><?php echo htmlspecialchars($shiftreport['services'])?></p>
+                     <p style=" word-wrap: break-word;" class="text-start"><?php echo htmlspecialchars($shiftreport['services'])?></p>
                      </div>
                 </div>
                 <div class="text-center">

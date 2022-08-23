@@ -1025,7 +1025,7 @@ function deleteRecord_prep(){
 
       <div class="modal-footer bg-dark border-dark">
       <button type="button" class="btn btn-secondary text-white " data-bs-dismiss="modal">Close</button>
-        <button type="submit" name="saveteam" class="btn btn-primary" >Save</button>
+        <button type="submit" name="saveteam" class="btn btn-primary" >Submit</button>
       </div>
       </form> 
     </div>

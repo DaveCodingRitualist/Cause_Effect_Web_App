@@ -1464,7 +1464,7 @@ function setID_(){
   </div>
 </div>
         <!-- ADD USERS  MODAL-->
-        <div class="modal fade pt-5 mt-2" id="exampleModal222" tabindex="-1" aria-labelledby="exampleModal222" aria-hidden="true">
+        <div class="modal fade pt-5 mt-2" id="exampleModal222" tabindex="-1" aria-labelledby="exampleModal222" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog ">
     <div class="modal-content  text-muted">
       <div class="modal-header modal-header1 bg-secondary text-white border-dark p-2 ">
@@ -1655,7 +1655,7 @@ function setID_(){
                     >checklist </i>Night Shift Duties</button>
                     </div>
                     <div class="card-body">
-                    <button type="button" class="btn btn-warning ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-file-circle-plus"></i> Prep recipes and Cocktails</button>
+                    <button type="button" class="btn btn-warning ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-file-circle-plus"></i> Prep and Cocktails Recipes</button>
                     </div>
                     <div class="card-body">
                     <button type="button" class="btn btn-info ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal222"> 
