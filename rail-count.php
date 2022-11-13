@@ -310,39 +310,6 @@ function setID(){
              width: 100%;
            }
         
-<<<<<<< HEAD
-  
-::-webkit-scrollbar{
-    width: 15px;
-    height: 5px;
-}
-::-webkit-scrollbar-thumb{
-    background: grey;
-    border-radius: 50px;
-}
-::-webkit-scrollbar-track{
-    background: #0D0A13;
-}
-.count-day input{
-    background-color: rgb(143, 191, 204);
-   }
-    /* @media(max-width: 1200px) and (min-width: 768px){
-        form{
-            width: 50%;
-        }
-    }
-    @media(max-width: 768px) and (min-width: 480px){
-        form{
-            width: 100%;
-        }
-    }
-    @media(min-width: 480px){
-        form{
-            width: 100%;
-        }
-    } */
-         
-=======
            /* @media(max-width: 480px){
             .count-day input{
                 width: 50px;
@@ -355,17 +322,16 @@ function setID(){
     background-color: rgb(143, 191, 204);
    }
     */
->>>>>>> f48f0e93c4a200ab3e08661fb3b7c9db55a91a50
         </style>
     <?php include('template/admin-header.php');?>
         <main class="pt-3 mt-5 section">
-            <div class="container-fluid text-center text-muted justify-contents-center">
+            <div class=" text-center text-muted justify-contents-center">
             <p id="daily-prep" style="display: none;"></p>
                 <h2 class="py-2 text-light bg-dark text-muted rounded " id="daily-orders"><i class="fa-solid fa-file-invoice"></i> Rail count</h2>
                 
                 
                 <div class="d-flex">
-                <form action="rail-count.php" class="container-fluid container-lg container-xl" method="post" >
+                <form action="rail-count.php" class="vw-100 mx-auto" method="post" >
                     <div class="mb-2">
                     <div class=" item-and-value ">
                     <div class="input-group mb-3" style="display: none;" >
@@ -377,7 +343,7 @@ function setID(){
             </div>
 
             <!-- bootstrap table -->
-            <div class="d-flex container-fluid table-data">
+            <div class="d-flex table-data">
            
                   </div>
                   <div class="btn-group-prep mb-2 justify-content-center">
@@ -385,16 +351,7 @@ function setID(){
                      <span class="input-group-text bg-danger" id="basic-addon1"><i class="fa-solid fa-receipt text-white"></i></span>
                     <input type="text" class="form-control bg-light text-muted " name="item-name" placeholder="Item" aria-label="Recipe" aria-describedby="basic-addon1">
                     </div>
-<<<<<<< HEAD
-                  <div class="d-flex mb-2 count-day">
-                     <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="wednesday" placeholder="W" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="thursday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
-                  <input type="number" class="form-control text-muted me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
-=======
+
                   <div class="d-flex mb-2 count-day text-white">
                      <input type="number" class="form-control  me-1" step="0.01" min="0"  name="monday" placeholder="M" aria-label="Request" aria-describedby="basic-addon1">
                   <input type="number" class="form-control   me-1" step="0.01" min="0"  name="tuesday" placeholder="T" aria-label="Request" aria-describedby="basic-addon1">
@@ -403,7 +360,7 @@ function setID(){
                   <input type="number" class="form-control   me-1" step="0.01" min="0"  name="friday" placeholder="F" aria-label="Request" aria-describedby="basic-addon1">
                   <input type="number" class="form-control   me-1" step="0.01" min="0"  name="saturday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
                   <input type="number" class="form-control   me-1" step="0.01" min="0"  name="sunday" placeholder="S" aria-label="Request" aria-describedby="basic-addon1">
->>>>>>> f48f0e93c4a200ab3e08661fb3b7c9db55a91a50
+
                   </div>
                   <div class="d-flex" style="justify-content: ;">
                     <button class="btn-success rounded btn-prep me-1" name="create"><i class="fa-solid fa-plus"></i></button>
