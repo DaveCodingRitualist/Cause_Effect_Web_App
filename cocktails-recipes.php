@@ -3,7 +3,7 @@ session_start();
 include('config/db_connect.php');
 
 //write query for all pizzas
-$sql = 'SELECT cocktail, ingredients, id FROM recipes2 ORDER BY cocktail'; 
+$sql = 'SELECT cocktail, ingredients, id, garnish FROM recipes2 ORDER BY cocktail'; 
 // if (isset($_POST['submit-search'])){
 //     $search = mysqli_real_escape_string($conn, $_POST['$_search']);
 //     $sql = "SELECT * FROM recipes WHERE title LIKE '%search%'";
@@ -101,6 +101,7 @@ mysqli_close($conn);
         
     } */
 
+
             .recipes{
             font-family: 'Open Sans Condensed', sans-serif;
             width: 100%;
@@ -172,6 +173,20 @@ mysqli_close($conn);
   section{
     height: 100vmax;
   }
+  h6 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.garnish{
+    margin-top: -15px;
+    font-weight: 900;
+}
+.garnish-text{
+    margin-top: -20px;
+}
+.instructions{
+    color: #9C5437;
+}
         </style>
      <?php include('template/admin-header.php'); ?>
 
@@ -206,9 +221,11 @@ mysqli_close($conn);
        <li><?php echo htmlspecialchars($ing);?></li>
        <?php endforeach ?>
     </ul>
-    
  </div>
-  
+   <div class="garnish">
+   <p class="instructions">Garnish</p>
+   <p class="garnish-text"><?php echo htmlspecialchars($recipe['garnish'])?></p>
+   </div>
    </div>
    <div class="card-action mb-1 more-info-div">
      <!-- go to a specific details according to recipe id -->

@@ -1,4 +1,4 @@
-
+<script src="app.js"></script>
 </head>
     <body class="sb-nav-fixed my-bg " >
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark text-muted " >
@@ -10,9 +10,9 @@
             
            
             <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4"">
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -24,7 +24,7 @@
         </nav>
         <div id="layoutSidenav"  class="mb-4">
             <div id="layoutSidenav_nav" >
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav sideNav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                           
@@ -117,7 +117,7 @@
                                     </div>
                                 </nav>
                             </div> -->
-                            <div class="sb-sidenav-menu-heading"></div>
+                            <div class="sb-sidenav-menu-heading sideNav"></div>
                             <a class="nav-link" href="manager-report.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-marker"></i></div>
                                Manager Report
@@ -125,10 +125,6 @@
                             <a class="nav-link" href="supplies.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-field"></i> </div>
                                Supplies
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Others
                             </a>
                         </div>
                     </div>

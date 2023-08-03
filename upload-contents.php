@@ -673,7 +673,7 @@ function setID_(){
 
     // COCKTAILS RECIPES
 
-    $title2 = $ingredients2 = $method2 = '';  
+    $title2 = $ingredients2 = $method2 = $garnish = '';  
     $errors2 = array('title2' => '', 'ingredients2' => '', 'method2' => '');
   
       if(isset($_POST['addpreprecipes2'])){
@@ -687,14 +687,14 @@ function setID_(){
               }
           }
           // check ingredients
-      if(empty($_POST['ingredients2'])){
-        $errors2['ingredients2'] = 'At least one ingredient is required';
-      } else{
-        $ingredients = $_POST['ingredients2'];
-              if(!preg_match('/^([\d]+[\.]?[\d]?[a-zA-Z\s]+)(,\s*[\d]+[\.]?[\d]?[a-zA-Z\s]*)*$/', $ingredients)){
-                  $errors2['ingredients2'] = 'Type the correct syntax for ingredients!';
-        }
-      }
+    //   if(empty($_POST['ingredients2'])){
+    //     $errors2['ingredients2'] = 'At least one ingredient is required';
+    //   } else{
+    //     $ingredients = $_POST['ingredients2'];
+    //           if(!preg_match('/^([\d]*[\.]?[\d]?[a-zA-Z\s]+)(,\s*[\d]+[\.]?[\d]?[a-zA-Z\s]*)*$/', $ingredients)){
+    //               $errors2['ingredients2'] = 'Type the correct syntax for ingredients!';
+    //     }
+    //   }
       //check method
       if(empty($_POST['method2'])){
         $errors2['method2'] = 'method is required';
@@ -702,6 +702,15 @@ function setID_(){
          $method = $_POST['method2'];
          if(!preg_match('/^[a-zA-Z0-9,\s]*$/', $method)){
            $errors2['method2'] = 'method must be letters and space only';
+         }
+        }
+      //check garnish
+      if(empty($_POST['garnish'])){
+        $errors2['garnish'] = 'garnish is required';
+       } else{
+         $method = $_POST['method2'];
+         if(!preg_match('/^[a-zA-Z0-9,\s]*$/', $garnish)){
+           $errors2['garnish'] = 'garnish must be letters and space only';
          }
         }
           if(array_filter($errors2)){
@@ -712,9 +721,10 @@ function setID_(){
               $title = mysqli_real_escape_string($conn, $_POST['title2']);
               $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients2']);
               $method = mysqli_real_escape_string($conn, $_POST['method2']);
+              $garnish = mysqli_real_escape_string($conn, $_POST['garnish']);
   
               // create sql
-        $sql = "INSERT INTO recipes2(cocktail,ingredients,metho) VALUES('$title','$ingredients','$method')";
+        $sql = "INSERT INTO recipes2(cocktail,ingredients,metho,garnish) VALUES('$title','$ingredients','$method','$garnish')";
             //   $sql = "INSERT INTO recipes(title,yield,ingredients,method) VALUES('$title','$yield','$ingredients','$method')";
               // save to db and check
               if(mysqli_query($conn, $sql)){
@@ -1445,6 +1455,10 @@ function setID_(){
                    <input type="text" class="form-control bg-light text-muted " name="method2" placeholder="Enter Method" aria-label="item" aria-describedby="basic-addon1" value = "<?php echo htmlspecialchars($method2) ?>">
                </div>
                <div class="red-danger error my-1 mt-0 pt-0"><?php echo $errors2['method2']; ?></div>
+               <div class="input-group mb-4">
+                    <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="fa-brands fa-pagelines"></i></span>
+                   <input type="text" class="form-control bg-light text-muted " name="garnish" placeholder="Enter Garnish" aria-label="item" aria-describedby="basic-addon1" value = "<?php echo htmlspecialchars($garnish) ?>">
+               </div>
                <button type="submit" name="addpreprecipes2" class="btn-light rounded text-muted p-2 py-1 fw-bold">Save Cocktail</button>
            </form>
                     </div>

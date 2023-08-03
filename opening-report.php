@@ -737,7 +737,7 @@ function deleteRecord_prep(){
                         <h6 class="">Prep:</h6>
                         <h6 class="">Bar Back:</h6>
                     </div>
-                      <div class="team-name text-end">
+                      <div class="team-name text-start">
                         <h6><?php echo htmlspecialchars($team['manager_on_duty'])?> </h6>
                         <h6><?php echo htmlspecialchars($team['anchor_on'])?></h6> 
                         <h6><?php echo htmlspecialchars($team['prep_on'])?></h6> 

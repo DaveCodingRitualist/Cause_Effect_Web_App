@@ -448,9 +448,7 @@ if(isset($_POST['floatclose'])){
         $id = textboxValue(value:"recipe-id");
         $slow = textboxValue(value:"slow-par");
         $busy = textboxValue(value:"busy-par");
-    
-      
-    
+        
         if($recipename && $stockonhand && $slow && $busy){
             
             $sql = "INSERT INTO prep(slow,busy,id,recipe_name,stock_on_hand) VALUES('$slow',$busy,'$id','$recipename','$stockonhand')";
@@ -1087,15 +1085,15 @@ function deleteRecord_prep(){
                     </div>
                     </div>
                     <div class="d-flex btn-group-prep justify-content-center">
-                        <button class="btn-success rounded btn-prep me-1" name="create_prep"><i class="fa-solid fa-plus"></i></button>
-                        <button class="btn-primary rounded btn-prep me-1 "name="read_prep"><i class="fa-solid fa-rotate"></i></button>
-                        <button class="btn-warning rounded btn-prep me-1" name="update_prep"><i class="fa-solid fa-marker text-white"></i></button>
-                        <button class="btn-danger rounded btn-prep me-1" name="delete_prep"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn-success rounded btn-prep me-1 myButton" name="create_prep"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn-primary rounded btn-prep me-1  myButton"name="read_prep"><i class="fa-solid fa-rotate"></i></button>
+                        <button class="btn-warning rounded btn-prep me-1 myButton" name="update_prep"><i class="fa-solid fa-marker text-white"></i></button>
+                        <button class="btn-danger rounded btn-prep me-1 myButton" name="delete_prep"><i class="fa-solid fa-trash-can"></i></button>
                         <?php deleteBtn_prep();?>
                     </div>
                 </form>
             </div>
-
+            
             <!-- bootstrap table -->
             <div class=" table-data py-2 ">
                 <table class="table table-striped table-dark">
@@ -2164,8 +2162,15 @@ echo $year;?> CAUSE EFFECT SMART BAR</div>
                     $('#text').autosize();
         });
     </script>
+<!-- <script>
+  var buttons = document.querySelectorAll('.myButton');
 
+buttons.forEach(function(button) {
+  button.addEventListener('click', function(event) {
+    event.preventDefault(); // This prevents the default behavior of the button
+    // Your code logic here
+  });
+});
+</script> -->
     </body>
 </html>
-
-

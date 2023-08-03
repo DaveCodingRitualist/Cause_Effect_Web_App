@@ -20,7 +20,6 @@ function TextNode($classname,$msg){
     $element = "<h6 class='$classname'>$msg</h6>";
     echo $element;
 }
-
 // SAVE TEAM ON SHFT
 
 if(isset($_POST['floatopen'])){

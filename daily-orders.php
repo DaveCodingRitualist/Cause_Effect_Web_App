@@ -53,18 +53,17 @@ function buttonElement($btnid, $styleclass, $text, $name, $attr){
 
 function createData(){
     
-    $recipename = textboxValue(value:"recipe-name");
-    $stockonhand = textboxValue(value:"stock-on-hand");
-    $id = textboxValue(value:"recipe-id");
+    $recipeid = textboxValue("recipe-id");
+    $recipename = textboxValue("recipe-name");
+    $stockonhand = textboxValue("stock-on-hand");
     $slow = textboxValue(value:"slow-par");
     $busy = textboxValue(value:"busy-par");
-
   
 
     if($recipename && $stockonhand && $slow && $busy){
-        
-        $sql = "INSERT INTO prep(slow,busy,id,recipe_name,stock_on_hand) VALUES('$slow',$busy,'$id','$recipename','$stockonhand')";
+        $sql = "INSERT INTO prep(slow,busy,id,recipe_name,stock_on_hand) VALUES('$slow',$busy,'$recipeid','$recipename','$stockonhand')";
         if(mysqli_query($GLOBALS['conn'],$sql)){
+
             TextNode(classname: "success", msg: "Record Succefully Inserted...!");
         }else{
             echo "Error";
@@ -101,8 +100,6 @@ function getData(){
         return $result;
     }
 }
-
-
 
 
 // update data
@@ -444,6 +441,5 @@ function setID(){
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>
             <script src="main2.js"></script>
-
     </body>
 </html> 

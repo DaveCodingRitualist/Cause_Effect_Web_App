@@ -3,7 +3,7 @@ session_start();
 include('config/db_connect.php');
 
 //write query for all pizzas
-$sql = 'SELECT title, yield, ingredients, id FROM recipes ORDER BY title'; 
+$sql = 'SELECT title, yield, ingredients, id, method FROM recipes ORDER BY title'; 
 // if (isset($_POST['submit-search'])){
 //     $search = mysqli_real_escape_string($conn, $_POST['$_search']);
 //     $sql = "SELECT * FROM recipes WHERE title LIKE '%search%'";
@@ -138,6 +138,19 @@ mysqli_close($conn);
   section{
     height: 100vmax;
   }
+  .title{
+    text-transform: uppercase;
+  }
+  .garnish{
+    margin-top: -15px;
+    font-weight: 900;
+}
+.garnish-text{
+    margin-top: -20px;
+}
+.instructions{
+    color: #9C5437;
+}
         </style>
      <?php include('template/admin-header.php'); ?>
 
@@ -165,7 +178,7 @@ mysqli_close($conn);
            <img src="images/NEW - C _ E Round Logo _ Colour New tagline _ High.png" alt="" width="100px" class="recipe">
      </div>
    <div class="card-content text-center text-muted">
-     <h6 class="fw-bold "><?php echo htmlspecialchars($recipe['title']); ?></h6>
+     <h6 class="fw-bold title"><?php echo htmlspecialchars($recipe['title']); ?></h6>
  <div class="ingredients-card">
       <ul>
       <?php foreach(explode(',', $recipe['ingredients']) as $ing): ?>
@@ -174,7 +187,10 @@ mysqli_close($conn);
     </ul>
     
  </div>
-  
+ <div class="garnish">
+   <p class="instructions">Instructions</p>
+   <p class="garnish-text mx-4 text-start"><?php echo htmlspecialchars($recipe['method'])?></p>
+   </div>
    </div>
    <div class="card-action mb-1 more-info-div">
      <!-- go to a specific details according to recipe id -->

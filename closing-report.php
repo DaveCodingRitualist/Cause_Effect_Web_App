@@ -6,7 +6,7 @@ session_start();
 //connection
 include('config/db_connect.php');
 if(isset($_POST['create'])){
-    
+
     createdata();
    
 }
@@ -734,7 +734,7 @@ function deleteRecord_prep(){
                      </div>
                      <h5 class="report-title fw-bold text-center" >Team on shift</h5>
                      <div class="team-section report-section">
-                      <div class="team-position">
+                      <div class="team-position text-start">
                         <h6 class="">MOD:</h6>
                         <h6 class="">Anchor:</h6>
                         <h6 class="">station One:</h6>
@@ -753,7 +753,6 @@ function deleteRecord_prep(){
                         <h6><?php echo htmlspecialchars($teamnight['sculler'])?></h6>
                       </div> 
                      </div>
-                     'lkn
                 </div>
              
                 <!-- FLOAT OPEN REPORT -->
